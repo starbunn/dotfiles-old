@@ -1,8 +1,8 @@
 # Reverting Commits.
  
-Incase you accidentally uploaded Poersonal Information to your github repository, or you just want to remove a commit, there is two options:
+Incase you accidentally uploaded Personal Information to your github repository, or you just want to remove a commit, there is two options:
 
-- [Remove ***FOREVER***](remove-forever).
+- [Remove ***FOREVER***](#remove-forever).
 - [Remove](#remove-only).
 
 
@@ -26,5 +26,5 @@ Here's the guide:
 
 - Run `git log` and find the commit you want to rever to, and then copy it's commit ID.
 - Run `git stash` to save your changes to a stash, if you want to keep them.
-- Run `git push origin +<commit_ID>:<main_branch_name>` (where `<commit_ID>` is the commit ID you copied, and `<main_branch_name.` is the name of the main branch on your github repo) in order to force push the reset using only one command.
+- Run `git push origin +<commit_ID>:<main_branch_name>` (where `<commit_ID>` is the commit ID you copied, and `<main_branch_name>` is the name of the main branch on your github repo) in order to force push the reset using only one command.
 - Run `git stash apply` to get your changes back, if you wanted to keep them.
