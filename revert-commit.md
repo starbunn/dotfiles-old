@@ -2,7 +2,7 @@
  
 Incase you accidentally uploaded Personal Information to your github repository, or you just want to remove a commit, there is two options:
 
-- [Remove ***FOREVER***](remove-forever).
+- [Remove ***FOREVER***](#remove-forever).
 - [Remove](#remove-only).
 
 
