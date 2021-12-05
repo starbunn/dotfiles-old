@@ -1,0 +1,102 @@
+-- enable the set command in init.lua
+o = vim.opt
+o.mouse = 'a'
+o.clipboard='unnamedplus'
+o.completeopt = {'noinsert', 'menuone', 'noselect'}
+o.hidden = true
+o.splitbelow = true
+o.splitright = true
+o.wildmenu = true
+vim.cmd [[ 
+   filetype plugin indent on
+   let NERDTreeShowHidden=1
+   set conceallevel=2
+]]
+
+-- line stuff
+o.number = true
+o.relativenumber = true
+o.laststatus = 2
+o.cursorline = true
+
+-- Set behavior of tab
+o.tabstop = 3
+o.shiftwidth = 3
+o.smarttab = true
+o.expandtab = true
+
+-- set leader to space
+vim.g.mapleader = ' '
+
+-- Plugins
+local Plug = vim.fn['plug#']
+
+vim.call('plug#begin', "~/.local/share/nvim/plug")
+
+Plug 'shaunsingh/nord.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug('nvim-treesitter/nvim-treesitter', {
+   ['do'] = vim.fn[':TSUpdate']
+})
+Plug 'preservim/nerdtree'
+Plug 'akinsho/bufferline.nvim'
+-- markdown extensions
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-fugitive'
+
+vim.call("plug#end")
+
+-- theming
+vim.cmd [[
+   set t_Co=256
+   set background=dark
+   if (has("termguicolors"))
+      set termguicolors
+   endif
+
+   let base16colorspace=256
+   syntax enable
+   colorscheme nord
+]]
+vim.g.nord_italic = true
+require('nord').set()
+
+-- setup lualine
+require'lualine'.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff',
+                  {'diagnostics', sources={'nvim_lsp', 'coc'}}},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
+-- setup bufferline
+require('bufferline').setup {
+   numbers = "buffer_id",
+   diagnostics = "nvim_lsp"
+}
