@@ -29,6 +29,12 @@ bindsym $mod+Return exec kitty
 # Keybinds @ Kill window
 bindsym $mod+Shift+q kill
 
+# Keybinds @ Screenshot current window
+bindsym $mod+z exec scrot -u
+
+# Keybinds @ Screenshot Selection
+bindsym $mod+Shift+S exec scrot -s
+
 # Keybinds @ Rofi
 bindsym $mod+x exec --no-startup-id rofi -show run
 
